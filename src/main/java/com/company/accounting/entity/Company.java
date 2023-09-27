@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
@@ -13,20 +14,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
 @Table(name = "companies")
+@Where(clause = "is_deleted=false")
 public class Company extends BaseEntity {
+
     @Column(unique = true)
     private String title;
 
-    private String phoneNumber;
+    private String phone;
 
-    private String webSite;
+    @Column(unique = true)
+    private String website;
 
     @Enumerated(EnumType.STRING)
-    private CompanyStatus status;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Address address;
-
-
+    private CompanyStatus companyStatus;
+//
+//    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    private Address address;
 }

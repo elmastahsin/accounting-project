@@ -1,5 +1,4 @@
 package com.company.accounting.entity.common;
-
 import com.company.accounting.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,18 +9,25 @@ import java.util.Collection;
 import java.util.List;
 
 public class UserPrincipal implements UserDetails {
+
+
     private final User user;
 
     public UserPrincipal(User user) {
         this.user = user;
     }
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        List<GrantedAuthority> authorityList = new ArrayList<>();
+
         GrantedAuthority authority = new SimpleGrantedAuthority(this.user.getRole().getDescription());
-        authorities.add(authority);
-        return authorities;
+
+        authorityList.add(authority);
+
+        return authorityList;
     }
 
     @Override
@@ -53,7 +59,9 @@ public class UserPrincipal implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    public Long getId() {
+
+    public Long getId(){
         return this.user.getId();
     }
+
 }

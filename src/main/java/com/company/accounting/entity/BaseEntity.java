@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
@@ -20,6 +17,7 @@ import java.time.LocalDateTime;
 
 public class BaseEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false, updatable = false)
     private LocalDateTime insertDateTime;

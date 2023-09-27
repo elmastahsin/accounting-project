@@ -1,22 +1,15 @@
-package com.company.accounting.entity;
+package com.company.accounting.dto;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Where;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "addresses")
-@Where(clause = "is_deleted=false")
-public class Address extends BaseEntity {
-
+public class AddressDTO {
     private String addressLine1;
     private String addressLine2;
     private String city;

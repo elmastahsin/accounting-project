@@ -2,11 +2,14 @@ package com.company.accounting.config;
 
 import com.company.accounting.service.SecurityService;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+
+@Configuration
 public class SecurityConfig {
 
     private final AuthSuccessHandler authenticationSuccessHandler;
@@ -23,28 +26,27 @@ public class SecurityConfig {
 
         return httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/users/**").hasAnyAuthority("Root Users", "Admin")
-                    .antMatchers("/companies/**").hasAnyAuthority("Root Users")
-                    .antMatchers("/", "/login", "/fragments", "/assets/**", "/img")
-                    .permitAll()
-                    .anyRequest().authenticated()
+                .antMatchers("/users/**").hasAnyAuthority("Root User","Admin")
+                .antMatchers("/companies/**").hasAnyAuthority("Root User")
+                .antMatchers("/", "/login", "fragments", "/assets/**", "/img/**")
+                .permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .successHandler(authenticationSuccessHandler)
-                    .failureUrl("/login?error=true")
-                    .permitAll()
+                .loginPage("/login")
+                .successHandler(authenticationSuccessHandler)
+                .failureUrl("/login?error=true")
+                .permitAll()
                 .and()
                 .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/login")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login")
                 .and()
                 .rememberMe()
-                    .tokenValiditySeconds(86400)
-                    .key("ngy")
-                    .userDetailsService(securityService)
-                .and()
-                .build();
+                .tokenValiditySeconds(86400)
+                .key("ngy")
+                .userDetailsService(securityService)
+                .and().build();
     }
 
 

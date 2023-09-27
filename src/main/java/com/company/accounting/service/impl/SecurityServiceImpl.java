@@ -6,7 +6,9 @@ import com.company.accounting.repository.UserRepository;
 import com.company.accounting.service.SecurityService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service // This annotation is used to mark the class as a service provider.
 public class SecurityServiceImpl implements SecurityService {
     private final UserRepository userRepository;
 
