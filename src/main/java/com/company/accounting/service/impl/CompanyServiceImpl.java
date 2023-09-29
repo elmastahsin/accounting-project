@@ -9,6 +9,7 @@ import com.company.accounting.service.CompanyService;
 import com.company.accounting.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,7 +57,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public CompanyDTO findById(Long aLong) {
-        return null;
+        return mapperUtil.convert(companyRepository.findById(aLong).get(), new CompanyDTO());
     }
 
     @Override
@@ -93,4 +94,6 @@ public class CompanyServiceImpl implements CompanyService {
     public boolean isExist(CompanyDTO companyDTO) {
         return false;
     }
+
+
 }

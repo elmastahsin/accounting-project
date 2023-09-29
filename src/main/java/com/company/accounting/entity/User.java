@@ -33,11 +33,9 @@ public class User extends BaseEntity {
     private boolean enabled;
 
     @ManyToOne
-    @Column(name = "role_id")
     private Role role;
 
     @ManyToOne
-    @Column(name = "company_id")
     private Company company;
 
 

@@ -16,7 +16,8 @@ public class UserDTO {
 
     @NotBlank
     @Email
-    private String email;
+    private String username;
+
 
     @Pattern(regexp = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,}")
     private String password;
@@ -54,12 +55,12 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.username = email;
     }
 
     public String getPassword() {

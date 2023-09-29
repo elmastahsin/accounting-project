@@ -1,6 +1,9 @@
 package com.company.accounting.service.impl;
 
 import com.company.accounting.dto.UserDTO;
+import com.company.accounting.entity.User;
+import com.company.accounting.repository.UserRepository;
+import com.company.accounting.mapper.MapperUtil;
 import com.company.accounting.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -8,10 +11,21 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Override
-    public UserDTO findByUsername(String name) {
-        return null;
+    private final UserRepository userRepository;
+    private final MapperUtil mapperUtil;
+
+    public UserServiceImpl(UserRepository userRepository, MapperUtil mapperUtil) {
+        this.userRepository = userRepository;
+        this.mapperUtil = mapperUtil;
     }
+
+    @Override
+    public UserDTO findByUsername(String username) {
+
+        return  null;
+
+    }
+
 
     @Override
     public UserDTO getCurrentUser() {

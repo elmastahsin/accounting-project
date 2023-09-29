@@ -38,7 +38,7 @@ values ('2022-09-15 00:00:00', 1, false, '2022-09-15 00:00:00', 1,
 insert into users(insert_date_time, insert_user_id, is_deleted, last_update_date_time, last_update_user_id,
                   username, password, firstname, lastname, phone, role_id, company_id, enabled)
 values
--- COMPANY-1 / CYDEO / ROOT USER
+-- COMPANY-1 / GNC / ROOT USER
 ('2022-09-09 00:00:00', 1, false, '2022-09-09 00:00:00', 1,
  'root@gnc.com', '$2a$10$nAB5j9G1c3JHgg7qzhiIXO7cqqr5oJ3LXRNQJKssDUwHXzDGUztNK',
  'Robert', 'Martin', '+1 (852) 564-5874', 1, 1, true),
