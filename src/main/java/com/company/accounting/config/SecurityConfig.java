@@ -5,24 +5,23 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
 
 @Configuration
 public class SecurityConfig {
 
-    private final AuthSuccessHandler authenticationSuccessHandler;
+    private final AuthSuccessHandler authSuccessHandler;
     private final SecurityService securityService;
 
-
-    public SecurityConfig(AuthSuccessHandler authenticationSuccessHandler, SecurityService securityService) {
-        this.authenticationSuccessHandler = authenticationSuccessHandler;
+    public SecurityConfig(AuthSuccessHandler authSuccessHandler, SecurityService securityService) {
+        this.authSuccessHandler = authSuccessHandler;
         this.securityService = securityService;
     }
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+
 
         return httpSecurity
                 .authorizeRequests()
@@ -34,7 +33,7 @@ public class SecurityConfig {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .successHandler(authenticationSuccessHandler)
+                .successHandler(authSuccessHandler)
                 .failureUrl("/login?error=true")
                 .permitAll()
                 .and()
@@ -44,10 +43,8 @@ public class SecurityConfig {
                 .and()
                 .rememberMe()
                 .tokenValiditySeconds(86400)
-                .key("ngy")
+                .key("gnc")
                 .userDetailsService(securityService)
                 .and().build();
     }
-
-
 }

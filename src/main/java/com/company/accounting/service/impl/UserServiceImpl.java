@@ -27,9 +27,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
-    }
-
     @Override
     public UserDTO getCurrentUser() {
         return null;

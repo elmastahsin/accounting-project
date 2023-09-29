@@ -57,11 +57,8 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public CompanyDTO findById(Long aLong) {
-        return companyRepository.findAll().stream()
-                .filter(company -> company.getId()!=1)
-                .sorted(Comparator.comparing(Company::getCompanyStatus).thenComparing(Company::getTitle))
-                .map(each -> mapperUtil.convert(each, new CompanyDTO()))
-                .collect(Collectors.toList());
+        return mapperUtil.convert(companyRepository.findById(aLong).get(), new CompanyDTO());
+    }
 
     @Override
     public List<CompanyDTO> findAll() {
@@ -97,4 +94,6 @@ public class CompanyServiceImpl implements CompanyService {
     public boolean isExist(CompanyDTO companyDTO) {
         return false;
     }
+
+
 }

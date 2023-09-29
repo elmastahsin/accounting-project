@@ -3,6 +3,7 @@ package com.company.accounting.converter;
 import com.company.accounting.dto.CompanyDTO;
 import com.company.accounting.service.CompanyService;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class CompanyDtoConverter implements Converter<String, CompanyDTO> {
     private final CompanyService companyService;
 
-    public CompanyDtoConverter(CompanyService companyService) {
+    public CompanyDtoConverter(@Lazy CompanyService companyService) {
         this.companyService = companyService;
     }
 
