@@ -20,10 +20,7 @@ public class AddressServiceImpl implements AddressService {
         return null;
     }
 
-    @Override
-    public AddressDTO findByName(String name) {
-        return null;
-    }
+
 
     @Override
     public void save(AddressDTO addressDTO) {
@@ -31,19 +28,17 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void delete(Long aLong) {
+    public void delete(AddressDTO addressDTO) {
 
     }
+
 
     @Override
     public void update(AddressDTO addressDTO, Long aLong) {
 
     }
 
-    @Override
-    public boolean isExist(AddressDTO addressDTO, Long aLong) {
-        return false;
-    }
+
 
     @Override
     public boolean isExist(AddressDTO addressDTO) {

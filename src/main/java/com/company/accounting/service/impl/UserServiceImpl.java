@@ -42,10 +42,6 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    @Override
-    public UserDTO findByName(String name) {
-        return null;
-    }
 
     @Override
     public void save(UserDTO userDTO) {
@@ -53,19 +49,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long aLong) {
+    public void delete(UserDTO userDTO) {
 
     }
+
 
     @Override
     public void update(UserDTO userDTO, Long aLong) {
 
     }
 
-    @Override
-    public boolean isExist(UserDTO userDTO, Long aLong) {
-        return false;
-    }
+
 
     @Override
     public boolean isExist(UserDTO userDTO) {

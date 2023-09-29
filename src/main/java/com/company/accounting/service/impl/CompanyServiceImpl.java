@@ -65,10 +65,7 @@ public class CompanyServiceImpl implements CompanyService {
         return null;
     }
 
-    @Override
-    public CompanyDTO findByName(String name) {
-        return null;
-    }
+
 
     @Override
     public void save(CompanyDTO companyDTO) {
@@ -76,18 +73,13 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void delete(Long aLong) {
+    public void delete(CompanyDTO companyDTO) {
 
     }
 
     @Override
     public void update(CompanyDTO companyDTO, Long aLong) {
 
-    }
-
-    @Override
-    public boolean isExist(CompanyDTO companyDTO, Long aLong) {
-        return false;
     }
 
     @Override
