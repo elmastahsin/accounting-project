@@ -10,14 +10,13 @@ public class MapperUtil {
 
     private final ModelMapper modelMapper;
 
-
     public MapperUtil(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
 
 
-    public <T> T convert(Object source,T targetClass) {
-       modelMapper.getConfiguration().setAmbiguityIgnored(true);
-        return modelMapper.map(source, (Type) targetClass.getClass());
+    public <T> T convert(Object objectToBeConverted, T convertedObject) {
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
+        return modelMapper.map(objectToBeConverted, (Type) convertedObject.getClass());
     }
 }

@@ -52,10 +52,7 @@ public class RoleServiceImpl implements RoleService {
         return null;
     }
 
-    @Override
-    public RoleDTO findByName(String name) {
-        return null;
-    }
+
 
     @Override
     public void save(RoleDTO roleDTO) {
@@ -63,19 +60,16 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void delete(Long aLong) {
+    public void delete(RoleDTO roleDTO) {
 
     }
+
 
     @Override
     public void update(RoleDTO roleDTO, Long aLong) {
 
     }
 
-    @Override
-    public boolean isExist(RoleDTO roleDTO, Long aLong) {
-        return false;
-    }
 
     @Override
     public boolean isExist(RoleDTO roleDTO) {
