@@ -3,12 +3,13 @@ package com.company.accounting.converter;
 import com.company.accounting.dto.ClientVendorDTO;
 
 import com.company.accounting.service.ClientVendorService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
 
 public class ClientVendorDtoConverter implements Converter<String, ClientVendorDTO> {
     private final ClientVendorService clientVendorService;
 
-    public ClientVendorDtoConverter(ClientVendorService clientVendorService) {
+    public ClientVendorDtoConverter(@Lazy ClientVendorService clientVendorService) {
         this.clientVendorService = clientVendorService;
     }
 
