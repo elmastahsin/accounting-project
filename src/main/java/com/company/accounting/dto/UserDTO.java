@@ -119,11 +119,11 @@ public class UserDTO {
         this.company = company;
     }
 
-    public Boolean getOnlyAdmin() {
+    public Boolean getIsOnlyAdmin() {
         return isOnlyAdmin;
     }
 
-    public void setOnlyAdmin(Boolean onlyAdmin) {
-        isOnlyAdmin = onlyAdmin;
+    public void setIsOnlyAdmin(Boolean isOnlyAdmin) {
+        this.isOnlyAdmin = isOnlyAdmin;
     }
 }

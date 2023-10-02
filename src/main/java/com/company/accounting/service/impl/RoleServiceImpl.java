@@ -28,17 +28,17 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<RoleDTO> getRolesForCurrentUser() {
         //get list of roles for current user
-        List<Role> roles= new ArrayList<>();
+        List<Role> roles = new ArrayList<>();
 
-        if(userService.getCurrentUser().getRole().getDescription().equals("Root User")) {
+        if (userService.getCurrentUser().getRole().getDescription().equals("Root User")) {
             roles = roleRepository.findAll().stream()
                     .filter(role -> role.getDescription().equals("Admin")).collect(Collectors.toList());
-        }else {
+        } else {
             roles = roleRepository.findAll().stream()
                     .filter(role -> !role.getDescription().equals("Root User"))
                     .collect(Collectors.toList());
         }
-        return roles.stream().map(role -> mapperUtil.convert(role,new RoleDTO())).collect(Collectors.toList());
+        return roles.stream().map(role -> mapperUtil.convert(role, new RoleDTO())).collect(Collectors.toList());
 
     }
 
@@ -49,30 +49,31 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<RoleDTO> findAll() {
-        return null;
+        throw new IllegalStateException("Not Implemented");
     }
-
 
 
     @Override
     public void save(RoleDTO roleDTO) {
-
+        throw new IllegalStateException("Not Implemented");
     }
 
     @Override
     public void delete(RoleDTO roleDTO) {
+        throw new IllegalStateException("Not Implemented");
 
     }
 
 
     @Override
     public void update(RoleDTO roleDTO, Long aLong) {
+        throw new IllegalStateException("Not Implemented");
 
     }
 
 
     @Override
     public boolean isExist(RoleDTO roleDTO) {
-        return false;
+        throw new IllegalStateException("Not Implemented");
     }
 }

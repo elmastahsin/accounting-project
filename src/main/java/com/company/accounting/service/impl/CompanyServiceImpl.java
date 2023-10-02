@@ -62,30 +62,48 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<CompanyDTO> findAll() {
-        return null;
+        return companyRepository.findAll().stream()
+                .filter(company -> company.getId() != 1)
+                .sorted(Comparator.comparing(Company::getCompanyStatus).thenComparing(Company::getTitle))
+                .map(each -> mapperUtil.convert(each, new CompanyDTO()))
+                .collect(Collectors.toList());
+
+
     }
 
 
 
     @Override
     public void save(CompanyDTO companyDTO) {
+        companyDTO.setCompanyStatus(CompanyStatus.PASSIVE);
+        companyRepository.save(mapperUtil.convert(companyDTO, new Company()));
 
     }
 
     @Override
     public void delete(CompanyDTO companyDTO) {
+        throw new IllegalStateException("Not Implemented");
 
     }
 
     @Override
     public void update(CompanyDTO companyDTO, Long aLong) {
+        Company savedCompany = companyRepository.findById(aLong).get();
+        companyDTO.setId(aLong);
+        companyDTO.setCompanyStatus(savedCompany.getCompanyStatus());
+        companyDTO.getAddress().setId(savedCompany.getAddress().getId());
+        companyDTO.getAddress().setCountry(savedCompany.getAddress().getCountry());
+        Company updatedCompany = mapperUtil.convert(companyDTO, new Company());
+
+        companyRepository.save(updatedCompany);
 
     }
 
     @Override
     public boolean isExist(CompanyDTO companyDTO) {
-        return false;
+        return findAll().stream().filter(savedCompany -> savedCompany.getTitle().equalsIgnoreCase(companyDTO.getTitle())).count() > 0;
     }
+
 
 
 }
